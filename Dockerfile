@@ -48,6 +48,16 @@ RUN cd /var/lib/asterisk/sounds && \
     wget -O - http://downloads.asterisk.org/pub/telephony/sounds/asterisk-core-sounds-en-g722-current.tar.gz | tar zx && \
     wget -O - http://downloads.asterisk.org/pub/telephony/sounds/asterisk-extra-sounds-en-g722-current.tar.gz | tar zx
 
+# Add user asterisk
+RUN useradd -m asterisk && \
+    mkdir -p /var/log/asterisk && \
+    chown -R asterisk. /var/log/asterisk && \
+    mkdir -p /var/spool/asterisk && \
+    chown -R asterisk. /var/spool/asterisk && \
+    chown asterisk. /var/run/asterisk && \
+    chown -R asterisk. /etc/asterisk && \
+    chown -R asterisk. /var/lib/asterisk && \
+    chown -R asterisk. /usr/lib/asterisk
 
 # Add runit services
 COPY sv /etc/service 
