@@ -43,7 +43,9 @@ RUN wget -O - http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-c
     rm -rf asterisk*
 
 RUN cd /var/lib/asterisk/sounds && \
+    wget -O - http://downloads.asterisk.org/pub/telephony/sounds/asterisk-core-sounds-en-wav-current.tar.gz | tar zx && \
     wget -O - http://downloads.asterisk.org/pub/telephony/sounds/asterisk-extra-sounds-en-wav-current.tar.gz | tar zx && \
+    wget -O - http://downloads.asterisk.org/pub/telephony/sounds/asterisk-core-sounds-en-g722-current.tar.gz | tar zx && \
     wget -O - http://downloads.asterisk.org/pub/telephony/sounds/asterisk-extra-sounds-en-g722-current.tar.gz | tar zx
 
 
